@@ -1,0 +1,996 @@
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&amp;family=Poppins:ital,wght@0,200;0,400;0,500;1,700&amp;display=swap');
+
+/* Variable definitions for color palette */
+:root {
+    --bg-black-900: #f2f2fc;
+    --bg-black-100: #fcf9ff;
+    --bg-black-50: #e8dfec;
+    --text-black-900: #302e4d;
+    --text-black-700: #504e70;
+}
+
+/* Dark mode styles */
+body.dark {
+    --bg-black-900: #151515;
+    --bg-black-100: #222222;
+    --bg-black-50: #393939;
+    --text-black-900: #ffffff;
+    --text-black-700: #e9e9e9;
+}
+
+/* General body styles */
+body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-size: 16px;
+    font-family: 'poppins', sans-serif;
+    overflow-x: hidden;
+    /* Added to handle potential overflow issues */
+}
+
+/* Reset styles for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/* Box-sizing for pseudo-elements */
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+/* Remove list styling */
+ul {
+    list-style: none;
+}
+
+/* Section styles */
+.section {
+    background: var(--bg-black-900);
+    min-height: 100vh;
+    display: block;
+    opacity: 1;
+    position: fixed;
+    left: 270px;
+    padding: 0 30px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Adjusted property name in the background color */
+/* background-color: var(-bg-black-900); */
+
+/* Style for sections that are pushed to the background */
+.section.back-section {
+    z-index: 1;
+}
+
+/* Style for the active section with sliding animation */
+.section.active {
+    z-index: 2;
+    opacity: 1;
+    animation: slideSection 1s ease;
+}
+
+/* Animation for sliding sections */
+@keyframes slideSection {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Padding utility class */
+.padd-15 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Container styles */
+.container {
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+}
+
+/* Container styles within a section */
+.section .container {
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+
+/* Section title styles */
+.section-title {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 60px;
+    /* background-color: #ec1839; */
+}
+
+/* Section title heading styles */
+.section-title h2 {
+    font-size: 40px;
+    color: var(--text-black-900);
+    font-weight: 700;
+    position: relative;
+}
+
+/* Section title heading pseudo-element styles */
+.section-title h2::before,
+.section-title h2::after {
+    content: '';
+    height: 4px;
+    background-color: var(--skin-color);
+    /* Assuming --skin-color is defined elsewhere */
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+/* Adjusted the width of the pseudo-elements */
+.section-title h2::before {
+    width: 50px;
+}
+
+.section-title h2::after {
+    width: 25px;
+    margin-top: 8px;
+}
+
+/* Row styles for flex container */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+    position: relative;
+}
+
+/* Button styles */
+.btn {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 35px;
+    color: white;
+    border-radius: 40px;
+    display: inline-block;
+    white-space: nowrap;
+    border: none;
+    background: var(--skin-color);
+    transition: all 0.3s ease;
+}
+
+/* Button hover effect */
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Shadow effect class */
+.shodow-daek {
+    box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+}
+
+/* Aside (sidebar) styles */
+.aside {
+    width: 270px;
+    background: var(--bg-black-100);
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 30px;
+    border-right: 1px solid var(--bg-black-50);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+/* Logo styles within the aside */
+.aside .logo {
+    position: absolute;
+    top: 50px;
+    font-size: 30px;
+    text-transform: capitalize;
+}
+
+/* Logo link styles */
+.aside .logo a {
+    color: var(--text-black-900);
+    font-weight: 700;
+    padding: 15px 20px;
+    font-size: 30px;
+    letter-spacing: 5px;
+    position: relative;
+}
+
+/* Logo span styles */
+.aside .logo a span {
+    font-family: 'Clicker Script', cursive;
+    font-size: 40px;
+}
+
+/* Logo pseudo-elements for decorative borders */
+.aside .logo a::before,
+.aside .logo a::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.aside .logo a::before {
+    border-bottom: 5px solid var(--skin-color);
+    border-left: 5px solid var(--skin-color);
+    bottom: 0;
+    left: 0;
+}
+
+.aside .logo a::after {
+    border-top: 5px solid var(--skin-color);
+    border-right: 5px solid var(--skin-color);
+    top: 0;
+    right: 0;
+}
+
+/* Navigation toggler button styles */
+.aside .nav-toggler {
+    height: 40px;
+    width: 45px;
+    border: 1px solid var(--bg-black-50);
+    cursor: pointer;
+    position: fixed;
+    left: 300px;
+    /* Adjusted the left position value */
+    top: 20px;
+    border-radius: 5px;
+    background: var(--bg-black-100);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Navigation toggler button styles when open */
+/* Navigation toggler styles */
+.aside .nav-toggler span {
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    display: inline-block;
+    position: relative;
+}
+
+/* Horizontal line in  the navigation toggler */
+
+/* Horizontal line in  the navigation toggler before */
+.aside .nav-toggler span::before {
+    content: '';
+    height: 2px;
+    width: 18px;
+    position: absolute;
+    background: var(--skin-color);
+    top: -6px;
+    left: 0;
+}
+
+/* Top line of the 'X' shape when the menu is open */
+.aside .nav-toggler.open span::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+/* Horizontal line in  the navigation toggler after */
+.aside .nav-toggler span::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    top: 6px;
+    left: 0;
+}
+
+/* Bottom line of the 'X' shape when the menu is open */
+.aside .nav-toggler.open span::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+/* Navigation styles */
+.aside .nav {
+    margin-top: 50px;
+}
+
+/* Navigation list item styles */
+.aside .nav li {
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* Navigation link styles */
+.aside .nav li a {
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    border-bottom: 1px solid var(--bg-black-50);
+    color: var(--text-black-900);
+    padding: 5px 15px;
+}
+
+/* Active navigation link styles */
+.aside .nav li a.active {
+    color: var(--skin-color);
+}
+
+/* Additional active navigation link styles */
+.aside .nav li a.active {
+    color: var(--skin-color);
+}
+
+/* Icon styles within navigation links */
+.aside .nav li a i {
+    margin-right: 15px;
+}
+
+/* Home Section Styles */
+.home {
+    min-height: 100vh;
+    display: flex;
+    color: var(--text-black-900);
+}
+
+/* Home Info Styles */
+.home .home-info {
+    flex: 0 0 60%;
+    max-width: 60%;
+}
+
+/* Hello Heading Styles */
+h3.hello {
+    font-size: 28px;
+    margin: 15px 0;
+}
+
+/* Hello Span Styles */
+h3.hello span {
+    font-family: 'Clicker Script', cursive;
+    font-size: 30px;
+    font-weight: 700;
+    /* Fix: Removed extra 'px' */
+    color: var(--skin-color);
+}
+
+/* My Profession Heading Styles */
+h3.my-profession {
+    font-size: 30px;
+    margin: 15px 0;
+}
+
+/* Typing Animation Styles */
+.typing {
+    color: var(--skin-color);
+}
+
+/* Home Info Paragraph Styles */
+.home-info p {
+    margin-bottom: 70px;
+    font-size: 20px;
+    color: var(--text-black-700);
+}
+
+/* Home Image Styles */
+.home .home-img {
+    flex: 0 0 40%;
+    max-width: 40%;
+    text-align: center;
+    position: relative;
+}
+
+/* Home Image Shape Styles */
+
+/* Home Image Positioning Styles */
+.home-img::after {
+    content: '';
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    border-bottom: 10px solid var(--skin-color);
+    border-right: 10px solid var(--skin-color);
+    right: 20px;
+    bottom: 0px;
+}
+
+.home-img::before {
+    content: '';
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    border-top: 10px solid var(--skin-color);
+    border-left: 10px solid var(--skin-color);
+    left: 20px;
+    top: -40px;
+}
+
+/* Home Image Content Styles */
+.home-img img {
+    height: 400px;
+}
+
+/* About Section Styles */
+.about-content {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* About Text Styles */
+.about-text {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* About Heading Styles */
+.about-text h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: var(--text-black-900);
+}
+
+/* About Heading Span Styles */
+.about-text h3 span {
+    color: var(--skin-color);
+}
+
+/* About Text Paragraph Styles */
+.about-text p {
+    font-size: 16px;
+    line-height: 25px;
+    color: var(--text-black-700);
+}
+
+/* Personal Info Section Styles */
+.personal-info {
+    flex: 0 0 60%;
+    max-width: 60%;
+    margin-top: 40px;
+}
+
+/* Individual Info Item Styles */
+.info-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+/* Personal Info Paragraph Styles */
+.info-item p {
+    font-weight: 600;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--text-black-900);
+    border-bottom: 1px solid var(--bg-black-50);
+}
+
+/* Span within Personal Info Paragraph Styles */
+.info-item p span {
+    font-weight: 400;
+    padding: 10px 0;
+    margin-left: 4px;
+    color: var(--text-black-700);
+    display: inline-block;
+}
+
+/* Buttons in Personal Info Section Styles */
+.buttons {
+    margin-top: 30px;
+}
+
+/* Button Styles within Personal Info Section */
+.btn {
+    margin-top: 10px;
+}
+
+/* Skills Section Styles */
+.skills {
+    flex: 0 0 40%;
+    max-width: 40%;
+    margin-top: 40px;
+}
+
+/* Individual Skill Item Styles */
+.skill-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* Skill Heading Styles */
+.skill-item h5 {
+    line-height: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-black-900);
+    text-transform: capitalize;
+}
+
+/* Skill Progress Bar Styles */
+.progress {
+    background-color: var(--bg-black-50);
+    height: 7px;
+    border-radius: 4px;
+    position: relative;
+}
+
+/* Margin between Skill Items */
+.skill-item {
+    margin-bottom: 25px;
+}
+
+/* Progress Bar within Skill Item Styles */
+.progress-in {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    height: 100%;
+    border-radius: 4px;
+    background-color: var(--skin-color);
+}
+
+/* Skill Percent Styles */
+.skill-percent {
+    position: absolute;
+    right: 0;
+    color: var(--text-black-900);
+    top: -40px;
+    line-height: 40px;
+}
+
+/* Education Section Styles */
+.education {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-top: 30px;
+}
+
+/* Experience Section Styles */
+.experience {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-top: 30px;
+}
+
+/* Section Title Styles */
+.about-content h3.title {
+    font-size: 35px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    font-weight: 700;
+    color: var(--text-black-900);
+}
+
+/* Timeline Box Styles */
+.timeline-box {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* Timeline Styles */
+.timeline {
+    background-color: var(--bg-black-100);
+    padding: 30px;
+    border: 1px solid var(--bg-black-50);
+    border-radius: 10px;
+    width: 100%;
+    /* if we add experience then we will take width 50% */
+    position: relative;
+}
+
+/* Timeline Item Styles */
+.timeline-item {
+    position: relative;
+    padding-left: 37px;
+    padding-bottom: 50px;
+}
+
+/* Adjust padding for the last timeline item */
+.timeline-item:last-child {
+    padding-bottom: 0px;
+}
+
+/* Vertical line before each timeline item */
+.timeline-item::before {
+    content: '';
+    width: 1px;
+    position: absolute;
+    height: 100%;
+    left: 7px;
+    top: 0;
+    background-color: var(--skin-color);
+}
+
+/* Dot representing timeline events */
+.circle-dot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: var(--skin-color);
+}
+
+/* Date of the timeline event */
+.timeline-date {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: var(--text-black-700);
+}
+
+/* Icon within the timeline date */
+.timeline-date .fa {
+    margin-right: 5px;
+}
+
+/* Title of the timeline event */
+.timeline-title {
+    font-weight: 700;
+    font-size: 21px;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    color: var(--text-black-900);
+}
+
+/* Text content of the timeline event */
+.timeline-text {
+    line-height: 25px;
+    font-size: 19px;
+    text-align: justify;
+    color: var(--text-black-700);
+}
+
+/* Service Section Styles */
+.service .container {
+    padding-bottom: 40px;
+}
+
+.service-item {
+    margin-bottom: 30px;
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+}
+
+
+.service-item-inner {
+    background-color: var(--bg-black-100);
+    border: 1px solid var(--bg-black-50);
+    border-radius: 10px;
+    padding: 30px 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.service-item-inner:hover {
+    box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+}
+
+.icon {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 30px;
+    text-align: center;
+    transition: all 0.3 ease;
+}
+
+.icon .fa {
+    font-size: 40px;
+    line-height: 60px;
+    color: var(--skin-color);
+    transition: all 0.3s ease;
+}
+
+.service-item-inner:hover .icon {
+    background: var(--skin-color);
+}
+
+.service-item-inner:hover .icon .fa {
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.service-item-inner h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--text-black-900);
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.service-item-inner p {
+    font-size: 16px;
+    color: var(--text-black-700);
+    line-height: 25px;
+}
+
+/* Portfolio Section Styles */
+.portfolio-heading {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 40px;
+}
+
+.portfolio-heading h2 {
+    color: var(--text-black-900);
+    font-weight: 500;
+}
+
+.portfolio-item {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    margin-bottom: 30px;
+}
+
+.portfolio-item-inner {
+    border: 6px solid #fefcff;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.portfolio-img img {
+    width: 100%;
+    display: block;
+}
+
+/* Contact Section Styles */
+.contact-title {
+    color: var(--skin-color);
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.contact-sub-title {
+    color: var(--text-black-900);
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 60px;
+}
+
+.contact-info-item {
+    flex: 0 0 25%;
+    max-width: 25%;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.icon {
+    display: inline-block;
+}
+
+.icon .fa {
+    font-size: 25px;
+    color: var(--skin-color);
+}
+
+.contact-info-item h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-black-900);
+    text-transform: capitalize;
+    margin: 15 0 5px;
+    /* Margin should have a unit (e.g., px, em) */
+}
+
+.contact-info-item p {
+    font-size: 16px;
+    line-height: 25px;
+    color: var(--text-black-700);
+    font-weight: 400;
+}
+
+.contact-form {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.contact-form .col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.contact-form .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.form-item {
+    margin-bottom: 30px;
+}
+
+.form-control {
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: var(--bg-black-100);
+    border: 1px solid var(--bg-black-50);
+    padding: 10px 25px;
+    font-size: 16px;
+    color: var(--text-black-700);
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+}
+
+.contact .contact-form .form-item textarea.form-control {
+    height: 140px;
+}
+
+.contact .contact-form .btn {
+    height: 50px;
+    padding: 0 50px;
+}
+
+/* Media Queries for Tablets (max-width: 1199px) */
+@media (max-width: 1199px) {
+    .section .container {
+        padding-top: 70px;
+    }
+
+    .aside {
+        left: -270px;
+    }
+
+    .aside.open {
+        left: 0;
+    }
+
+    .aside .nav-toggler {
+        display: flex;
+        left: 30px;
+    }
+
+    .aside .nav-toggler.open {
+        left: 300px;
+    }
+
+    .section {
+        left: 0;
+    }
+
+    .section.open {
+        left: 270px;
+    }
+
+
+    /* Adjust the following selector according to your project structure */
+    .about.about-content .personal-info .info-item p span {
+        display: block;
+        margin-left: 0;
+    }
+}
+
+/* Media Queries for Phones (max-width: 991px) */
+@media (max-width: 991px) {
+
+    .contact .contact-info-item,
+    .portfolio .portfolio-item,
+    .service .service-item {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .home .home-info {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .home .home-img {
+        display: none;
+    }
+}
+
+/* Media Queries for Small Screens (max-width: 767px) */
+@media (max-width: 767px) {
+
+    .contact .contact-form .col-6,
+    .contact .contact-info-item,
+    .portfolio .portfolio-item,
+    .service .service-item,
+    .about .about-content .experience,
+    .about .about-content .education,
+    .about .about-content .skills,
+    .about.about-content .personal-info {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Media Queries for Extra Small Screens (max-width: 575px) */
+@media (max-width: 575px) {
+
+    .contact .contact-form .col-6,
+    .contact .contact-info-item,
+    .portfolio .portfolio-item,
+    .service .service-item,
+    .about .about-content .experience,
+    .about .about-content .education,
+    .about .about-content .skills,
+    .about.about-content .personal-info {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .contact .contact-form .form-item .form-control {
+        height: 40px;
+    }
+
+    .contact .contact-form .btn {
+        height: 40px;
+        padding: 0 30px;
+    }
+}
+
+
+
+/* footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* CONTACT */
+
+#contacts {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 70vh;
+}
+
+.contact-info-upper-container {
+    display: flex;
+    justify-content: center;
+    border-radius: 2rem;
+    border: rgb(53, 53, 53) 0.1rem solid;
+    border-color: rgb(163, 163, 163);
+    background: (250, 250, 250);
+    margin: 2rem auto;
+    padding: 0.5rem;
+}
+
+.contact-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem;
+}
+
+.contact-info-container p {
+    font-size: larger;
+}
+
+.contact-icon {
+    cursor: default;
+}
