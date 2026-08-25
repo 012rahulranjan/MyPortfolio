@@ -3,9 +3,10 @@ var typed = new Typed(".typing", {
   strings: [
     "",
     "Software Engineer",
-    "Frontend Developer",
-    "Analyst",
+    "Application Support Engineer",
+    "Data Analyst",
     "Programmer",
+    "Content Moderator/QA"
   ],
   typeSpeed: 100,
   BackSpeed: 60,
